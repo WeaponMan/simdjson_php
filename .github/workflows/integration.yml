@@ -42,8 +42,8 @@ jobs:
 
       - name: "Build extension"
         run: |
-          update-alternatives --set php /usr/bin/php${{ matrix.php-version }}
-          update-alternatives --set phpize /usr/bin/phpize${{ matrix.php-version }}
+          sudo update-alternatives --set php /usr/bin/php${{ matrix.php-version }}
+          sudo update-alternatives --set phpize /usr/bin/phpize${{ matrix.php-version }}
           phpize
           ./configure
           sudo make
