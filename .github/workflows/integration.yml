@@ -25,6 +25,9 @@ jobs:
     strategy:
       matrix:
         php-version:
+          - "7.0"
+          - "7.1"
+          - "7.2"
           - "7.3"
           - "7.4"
 
@@ -39,7 +42,7 @@ jobs:
 
       - name: "Build extension"
         run: |
-          phpize
+          phpize${{ matrix.php-version }}
           ./configure
           sudo make
           sudo make install
