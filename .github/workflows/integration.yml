@@ -43,8 +43,8 @@ jobs:
       - name: "Build extension"
         run: |
           phpize${{ matrix.php-version }}
-          ./configure --with-php-config /usr/bin/php-config${{ matrix.php-version }}
-          sudo make
+          ./configure --with-php-config=/usr/bin/php-config${{ matrix.php-version }}
+          sudo make -j2
           sudo make install
           sudo make test
 
