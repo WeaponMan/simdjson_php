@@ -42,16 +42,14 @@ jobs:
 
       - name: "Build extension"
         run: |
-          sudo update-alternatives --set php /usr/bin/php${{ matrix.php-version }}
-          sudo update-alternatives --set phpize /usr/bin/phpize${{ matrix.php-version }}
-          phpize
+          phpize${{ matrix.php-version }}
           ./configure
           sudo make
           sudo make install
           sudo make test
 
       - name: "Show"
-        run: "php -dextension=simdjson.so --ri simdjson"
+        run: "php${{ matrix.php-version }} -dextension=simdjson.so --ri simdjson"
 
       - name: "Error log"
         if: ${{ failure() }}
